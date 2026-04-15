@@ -3,9 +3,11 @@ import { useState } from "react";
 interface ListGroupProps {
   heading: string;
   items: string[];
+  onSelectItem: (item: string) => void;
 }
 
-function ListGroup({ heading, items }: ListGroupProps) {
+// Treat Prop as Immutable as a principle in React
+function ListGroup({ heading, items, onSelectItem }: ListGroupProps) {
   // Hook for State
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -25,6 +27,9 @@ function ListGroup({ heading, items }: ListGroupProps) {
             // No In-Built Hover, Use MouseEnter Instead
             onMouseEnter={() => {
               setSelectedIndex(index);
+            }}
+            onClick={() => {
+              onSelectItem(item);
             }}
           >
             {item}
