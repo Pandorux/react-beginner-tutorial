@@ -1,19 +1,37 @@
-import { Fragment } from "react";
+import { useState } from "react";
 
-function ListGroup() {
-  const items = ["New York", "San Francesco", "Tokyo", "London", "Paris"];
+interface ListGroupProps {
+  heading: string;
+  items: string[];
+}
+
+function ListGroup({ heading, items }: ListGroupProps) {
+  // Hook for State
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
-    <Fragment>
-      <h1>List</h1>
+    <>
+      <h1>{heading}</h1>
+      {items.length === 0 ? <p>No items found</p> : null}
       <ul className="list-group">
-        {items.map((item) => (
-          <li key={item} className="list-group-item">
+        {items.map((item, index) => (
+          <li
+            key={item}
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            // No In-Built Hover, Use MouseEnter Instead
+            onMouseEnter={() => {
+              setSelectedIndex(index);
+            }}
+          >
             {item}
           </li>
         ))}
       </ul>
-    </Fragment>
+    </>
   );
 }
 
