@@ -11,19 +11,31 @@ function App() {
   const [alertVisible, setAlertVisibility] = useState(false);
 
   return (
-    <div>
-      <ListGroup
-        heading="Pokemon"
-        items={["Pikachu", "Charizard", "Blastoise", "Venusaur"]}
-        onSelectItem={handleSelectItem}
-      />
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div>
+        <div className="p-3">
+          <ListGroup
+            heading="Kanto Pokemon"
+            items={["Pikachu", "Chamander", "Squirtle", "Bulbasaur"]}
+            onSelectItem={handleSelectItem}
+          />
 
-      {alertVisible && (
-        <Alert onClose={() => setAlertVisibility(false)}>Test</Alert>
-      )}
-      <Button color="danger" onClick={() => setAlertVisibility(true)}>
-        Button Button
-      </Button>
+          <br />
+
+          <div className="text-end">
+            <p>Do you know what all these these pokemon have in common?</p>
+            <Button color="danger" onClick={() => setAlertVisibility(true)}>
+              Tell Me!
+            </Button>
+          </div>
+
+          {alertVisible && (
+            <Alert onClose={() => setAlertVisibility(false)}>
+              They're all starter pokemon that you get from Professor Oak!
+            </Alert>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

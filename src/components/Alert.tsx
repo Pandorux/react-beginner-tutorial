@@ -7,7 +7,7 @@ interface Props {
 
 const Alert = ({ children, onClose }: Props) => {
   return (
-    <div className="alert alert-primary alert-dismissible">
+    <div className="alert alert-primary alert-dismissible fade show position-absolute top-0 start-50 translate-middle mt-5">
       {children}
       <button
         type="button"
